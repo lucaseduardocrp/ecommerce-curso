@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useContext } from 'react';
 
 export default function CartPage() {
-  const { cart } = useContext(CartContext)
+  const { cart, total } = useContext(CartContext)
 
   return (
     <div className="w-full max-w-7xl mx-auto">
@@ -18,11 +18,13 @@ export default function CartPage() {
           </Link>
         </div> 
       )}
-      
+
       <CartItem />
 
       {cart.length !== 0 && (
-        <p className='font-bold mt-4'>Total: R$ {cart.map(item => item.total)}</p>
+        <p className='font-bold mt-4'>
+          Total: {total}
+        </p>
       )}
     </div>
   )

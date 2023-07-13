@@ -3,7 +3,7 @@ import { CartContext } from '@/context/CartContext'
 import Image from 'next/image'
 
 export default function CartItem() {
-  const { cart } = useContext(CartContext)
+  const { cart, addItemCart, removeItemCart } = useContext(CartContext)
 
   return (
     <>
@@ -16,19 +16,26 @@ export default function CartItem() {
           </strong>
     
           <div className="flex items-center justify-center gap-3">
-            <button className="bg-slate-600 px-2 rounded text-white font-medium flex items-center justify-center">
+            <button 
+              className="bg-slate-600 px-2 rounded text-white font-medium flex items-center justify-center" 
+              onClick={() => removeItemCart(item)}>
               -
             </button>
             
             {item.amount}
             
-            <button className="bg-slate-600 px-2 rounded text-white font-medium flex items-center justify-center">
+            <button 
+              className="bg-slate-600 px-2 rounded text-white font-medium flex items-center justify-center" 
+              onClick={() => addItemCart(item)}>
               +
             </button>
           </div>
     
           <strong className="float-right">
-            SubTotal: R$ {item.total}
+            SubTotal: {item.total.toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL'
+            })}
           </strong>
         </section>
       ))}
