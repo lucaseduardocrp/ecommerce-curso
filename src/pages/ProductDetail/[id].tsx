@@ -14,14 +14,14 @@ export default function ProductDetail() {
 
   useEffect(() => {
     async function getProducts() {
-      const response = await api.get('/products') 
+      const response = await api.get(`/products/${id}`) 
 
       setProducts(response.data)
     }
 
     getProducts();
     
-  }, [])
+  }, [id])
 
   const handleAddCartItem = (product: ProductTypes) => {
     toast.success('Item adicionado no carrinho', {
@@ -34,22 +34,23 @@ export default function ProductDetail() {
 
   return (
     <>
-      {products.map((item) => (
-        <div key={item.id}>
-          <Image src={item.image} alt={item.title} width={400} height={400} />
+      {products && (
+        <section className='w-full'>
+          <div className='flex flex-col lg:flex-row'>
+            <Image src={products.image} alt='' width={400} height={400} />
+          </div>
 
-          <div>
-            <h2>{item.title}</h2>
-            <p>{item.description}</p>
-            <div>
-              <p>{item.price}</p>
-              <button className='bg-zinc-900 p-1 rounded' onClick={() => handleAddCartItem(item)}>
-                <BsCartPlus size={20} color='#fff'/>
-              </button>
-            </div>
-          </div> 
-        </div>
-      ))}
+          <div className="flex-1">
+            <p className="font-bold text-2xl mt-4 mb-2">Title</p>
+            <p className="my-4">Description</p>
+            <strong>Price</strong>
+            <button className='bg-zinc-900 p-1 rounded ml-3'>
+              <BsCartPlus size={20} color='#fff' />
+            </button>
+          </div>
+
+        </section>
+      )}
     </>
   )
 }
