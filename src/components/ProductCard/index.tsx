@@ -32,18 +32,20 @@ export default function ProductCard() {
 
   return (
     <>
-      {products.map((item, index) => {
-        <section className='w-full' key={index}>
-          <Image 
-            alt={item.title} 
-            src={item.image} 
-            width={200} height={200} 
-            className='w-full rounded-lg max-h-70 mb-2'
-          />
+      {products.map((item, index) => (
+        <section className='w-full h-full' key={index}>
+          <div className='min-h-[20rem] flex flex-col items-center justify-center'>
+            <Image 
+              alt={item.title} 
+              src={item.image} 
+              width={100} height={100} 
+              className='w-full rounded-lg max-h-60 mb-2'
+            />
+          </div>
           <p className='font-medium mt-1 mb-2'>
             {item.title}
           </p>
-  
+
           <div className='flex gap-3 items-center'>
             <strong className='text-zinc-700/90'>
             R$ {item.price}
@@ -53,7 +55,7 @@ export default function ProductCard() {
             </button>
           </div>
         </section>
-      })}
+      ))}
     </>
   )
 }
