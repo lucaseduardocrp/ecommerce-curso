@@ -2,11 +2,13 @@ import Image from 'next/image';
 import {BsCartPlus} from 'react-icons/bs'
 
 import { api } from '../../services/api'
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ProductTypes } from '@/types/products-types';
+import { CartContext } from '@/context/CartContext';
 
 export default function ProductCard() {
   const [products, setProducts] = useState<ProductTypes[]>([])
+  const { addItemCart } = useContext(CartContext)
 
   useEffect(() => {
     async function getProducts(){
@@ -19,7 +21,7 @@ export default function ProductCard() {
   }, [])
 
   const handleAddCartItem = (product: ProductTypes) => {
-    console.log(product)
+    addItemCart(product)
   }
 
   return (
