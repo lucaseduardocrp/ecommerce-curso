@@ -3,22 +3,10 @@ import {BsCartPlus} from 'react-icons/bs'
 
 import { api } from '../../services/api'
 import { useEffect, useState } from 'react';
-
-interface ProductProps {
-  id: number,
-  title: string,
-  price: number,
-  description: string,
-  category: string,
-  image: string,
-  rating: {
-    rate: number,
-    count: number,
-  }
-}
+import { ProductTypes } from '@/types/products-types';
 
 export default function ProductCard() {
-  const [products, setProducts] = useState<ProductProps[]>([])
+  const [products, setProducts] = useState<ProductTypes[]>([])
 
   useEffect(() => {
     async function getProducts(){
