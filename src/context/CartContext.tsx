@@ -9,6 +9,7 @@ interface CartPropTypes extends ProductTypes{
 interface CartContextData {
   cart: CartPropTypes[],
   cartAmount: number,
+  addItemCart: (newItem: ProductTypes) => void;
 } 
 
 export const CartContext = createContext({} as CartContextData)
@@ -39,7 +40,11 @@ export default function CartProvider(props: {children: ReactNode}) {
   }
 
   return(
-    <CartContext.Provider value={{ cart, cartAmount: cart.length }}>
+    <CartContext.Provider value={{
+      cart, 
+      cartAmount: cart.length, 
+      addItemCart 
+    }}>
       {props.children}
     </CartContext.Provider>
   )
