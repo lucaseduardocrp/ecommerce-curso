@@ -6,6 +6,8 @@ import { useContext, useEffect, useState } from 'react';
 import { ProductTypes } from '@/types/products-types';
 import { CartContext } from '@/context/CartContext';
 
+import { toast } from 'react-hot-toast';
+
 export default function ProductCard() {
   const [products, setProducts] = useState<ProductTypes[]>([])
   const { addItemCart } = useContext(CartContext)
@@ -21,6 +23,11 @@ export default function ProductCard() {
   }, [])
 
   const handleAddCartItem = (product: ProductTypes) => {
+    toast.success('Produto adicionado no carrinho'), {
+      style: {
+        borderRadius: 10,
+      }
+    }
     addItemCart(product)
   }
 
