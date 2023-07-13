@@ -9,7 +9,7 @@ export default function Header() {
           Dev Shop
         </Link>
 
-        <Link href={'/cart'} className='relative'>
+        <Link href={'/CartPage'} className='relative'>
           <FiShoppingCart size={24} color='#121212' />
           <span 
             className='
