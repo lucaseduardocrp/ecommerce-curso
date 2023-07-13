@@ -18,6 +18,10 @@ export default function ProductCard() {
     getProducts()
   }, [])
 
+  const handleAddCartItem = (product: ProductTypes) => {
+    console.log(product)
+  }
+
   return (
     <>
       {products.map((item, index) => (
@@ -38,7 +42,7 @@ export default function ProductCard() {
             <strong className='text-zinc-700/90'>
             R$ {item.price}
             </strong>
-            <button className='bg-zinc-900 p-1 rounded'>
+            <button className='bg-zinc-900 p-1 rounded' onClick={() => handleAddCartItem(item)}>
               <BsCartPlus size={20} color='#fff'/>
             </button>
           </div>
