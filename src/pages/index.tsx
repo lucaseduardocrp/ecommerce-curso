@@ -1,6 +1,4 @@
 import ProductCard from '@/components/ProductCard';
-import Image from 'next/image';
-import {BsCartPlus} from 'react-icons/bs'
 
 export default function Home() {
   return (
