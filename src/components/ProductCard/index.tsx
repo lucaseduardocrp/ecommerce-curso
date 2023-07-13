@@ -34,7 +34,7 @@ export default function ProductCard() {
     <>
       {products.map((item, index) => (
         <section className='w-full h-full' key={index}>
-          <div className='min-h-[20rem] flex flex-col items-center justify-center'>
+          <div className='h-72 flex flex-col items-center justify-center'>
             <Image 
               alt={item.title} 
               src={item.image} 
