@@ -7,7 +7,6 @@ import { ProductTypes } from '@/types/products-types';
 import { CartContext } from '@/context/CartContext';
 
 import { toast } from 'react-hot-toast';
-import Link from 'next/link';
 
 export default function ProductCard() {
   const [products, setProducts] = useState<ProductTypes[]>([])
@@ -36,19 +35,17 @@ export default function ProductCard() {
     <>
       {products.map((item) => (
         <section className='w-full h-full' key={item.id}>
-          <Link href={`Product/${item.id}`}>
-            <div className='h-72 flex flex-col items-center justify-center'>
-              <Image
-                alt={item.title}
-                src={item.image}
-                width={100} height={100}
-                className='w-full rounded-lg max-h-60 mb-2'
-              />
-            </div>
-            <p className='font-medium mt-1 mb-2'>
-              {item.title}
-            </p>
-          </Link>
+          <div className='h-72 flex flex-col items-center justify-center'>
+            <Image
+              alt={item.title}
+              src={item.image}
+              width={100} height={100}
+              className='w-full rounded-lg max-h-60 mb-2'
+            />
+          </div>
+          <p className='font-medium mt-1 mb-2'>
+            {item.title}
+          </p>
 
           <div className='flex gap-3 items-center'>
             <strong className='text-zinc-700/90'>
